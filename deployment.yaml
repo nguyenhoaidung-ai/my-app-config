@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app
+  namespace: default
+  labels:
+    app: my-app
 spec:
   replicas: 1
   selector:
@@ -11,9 +14,9 @@ spec:
     metadata:
       labels:
         app: my-app
-      spec:
-        containers:
-        - name: my-app
-          image: nginx:latest
-          ports:
-          - containerPort: 80
+    spec:
+      containers:
+      - name: my-app
+        image: nginx:latest
+        ports:
+        - containerPort: 80
